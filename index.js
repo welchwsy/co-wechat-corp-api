@@ -2,9 +2,9 @@ var API = require('./lib/api_common');
 // 部门管理
 API.mixin(require('./lib/api_department'));
 // 媒体管理（上传、下载）
-API.mixin(require('./lib/api_media'));
+// API.mixin(require('./lib/api_media'));
 // 菜单管理
-// API.mixin(require('./lib/api_menu'));
+API.mixin(require('./lib/api_menu'));
 // 消息发送
 API.mixin(require('./lib/api_message'));
 // // 标签管理
