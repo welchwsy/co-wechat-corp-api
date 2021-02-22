@@ -25,9 +25,9 @@ var postJSON = util.postJSON;
  * @param {String} filepath 文件路径
  * @param {String} type 媒体类型，可用值有image、voice、video、file
  */
-exports.uploadMedia = function* (filepath, type) {
-  var token = yield* this.ensureAccessToken();
-  var stat = yield fs.stat(filepath);
+exports.uploadMedia = async (filepath, type) => {
+  var token = await this.ensureAccessToken();
+  var stat = await fs.stat(filepath);
 
   var form = formstream();
   form.file('media', filepath, path.basename(filepath), stat.size);
@@ -39,13 +39,13 @@ exports.uploadMedia = function* (filepath, type) {
     headers: form.headers(),
     data: form
   };
-  return yield* this.request(url, opts);
+  return await this.request(url, opts);
 };
 
 ['image', 'voice', 'video', 'file'].forEach(function (type) {
   var method = 'upload' + type[0].toUpperCase() + type.substring(1);
-  exports[method] = function* (filepath, callback) {
-    return yield* this.uploadMedia(filepath, type);
+  exports[method] = async (filepath, callback) => {
+    return await this.uploadMedia(filepath, type);
   };
 });
 
@@ -54,17 +54,17 @@ exports.uploadMedia = function* (filepath, type) {
  * 详情请见：<http://qydev.weixin.qq.com/wiki/index.php?title=获取媒体文件>
  * Examples:
  * ```
- * var ret = yield api.getMedia(mediaId);
+ * var ret = await api.getMedia(mediaId);
  * ```
  * - `result`, 调用正常时得到的文件Buffer对象
  *
  * @param {String} mediaId 媒体文件的ID
  */
-exports.getMedia = function* (mediaId) {
-  var token = yield* this.ensureAccessToken();
+exports.getMedia = async (mediaId) => {
+  var token = await this.ensureAccessToken();
   var url = this.prefix + 'media/get?access_token=' + token.accessToken + '&media_id=' + mediaId;
   var opts = {
     timeout: 60000 // 60秒超时
   };
-  return yield* this.request(url, opts);
+  return await this.request(url, opts);
 };

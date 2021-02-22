@@ -15,7 +15,7 @@
     "after",
     "afterEach"
   ],
-  "noyield": "true",
+  "noawait": "true",
   "esnext": "true",
   "node": true,
   "bitwise": true,

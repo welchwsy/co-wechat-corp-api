@@ -5,7 +5,7 @@ var streamx = require('streamx');
 var co = require('co');
 
 // var api = new API(config.corpid, config.corpsecret)
-var x = function* () {
+var x = async () => {
     var url = 'https://qyapi.weixin.qq.com/cgi-bin/user/update?access_token=m3bEweu8-G2RJBcs0RyI6nQ_t-eH32HKuEyyaIUHQvvCe-nxA54ilMm01Baee1WwOCEZP0AIXIImWDcax9FVDg';
     var options = {
         dataType: 'json',
@@ -16,9 +16,9 @@ var x = function* () {
             'Content-Type': 'application/json'
         }
     };
-    var res = yield httpx.request(url, options);
+    var res = await httpx.request(url, options);
     console.log(res.statusCode);
-    var buf = yield streamx.read(res);
+    var buf = await streamx.read(res);
     console.log(buf.toString());
     return buf;
 }

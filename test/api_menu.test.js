@@ -6,8 +6,8 @@ describe('api_menu', function () {
     var api = new API(config.corpid, config.corpsecret);
 
     describe('createMenu', function () {
-        it('should ok', function* () {
-            var ret = yield api.createMenu(config.agentid, config.test_menu);
+        it('should ok', async () => {
+            var ret = await api.createMenu(config.agentid, config.test_menu);
             console.log(ret);
             expect(ret).to.only.have.keys(['errcode', 'errmsg']);
             expect(ret.errcode).to.be(0);
@@ -16,8 +16,8 @@ describe('api_menu', function () {
     });
 
     describe('getMenu', function () {
-        it('should ok', function* () {
-            var ret = yield api.getMenu(config.agentid);
+        it('should ok', async () => {
+            var ret = await api.getMenu(config.agentid);
             console.log(ret);
             expect(ret).to.only.have.keys(['errcode', 'errmsg']);
             expect(ret.errcode).to.be(0);
@@ -26,8 +26,8 @@ describe('api_menu', function () {
     });
 
     describe('removeMenu', function () {
-        it('should ok', function* () {
-            var ret = yield api.removeMenu(config.agentid);
+        it('should ok', async () => {
+            var ret = await api.removeMenu(config.agentid);
             console.log(ret);
             expect(ret).to.only.have.keys(['errcode', 'errmsg']);
             expect(ret.errcode).to.be(0);

@@ -6,8 +6,8 @@ describe('api_ip', function () {
     var api = new API(config.corpid, config.corpsecret);
 
     describe('getCallbackIP', function () {
-        it('should ok', function* () {
-            var data = yield api.getCallbackIP();
+        it('should ok', async () => {
+            var data = await api.getCallbackIP();
             expect(data).to.only.have.keys('ip_list');
         });
 
