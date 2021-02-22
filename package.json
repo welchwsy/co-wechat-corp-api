@@ -1,6 +1,6 @@
 {
-  "name": "co-wechat-enterprise-api",
-  "version": "1.0.0",
+  "name": "co-wechat-corp-api",
+  "version": "1.0.1",
   "description": "微信企业号Node库API，ES6版本",
   "main": "index.js",
   "scripts": {
