@@ -9,8 +9,8 @@ API.mixin(require('./lib/api_department'));
 // API.mixin(require('./lib/api_message'));
 // // // 标签管理
 // // API.mixin(require('./lib/api_tag'));
-// // // 用户管理
-// API.mixin(require('./lib/api_user'));
+// 用户管理
+API.mixin(require('./lib/api_user'));
 // // IP段查询
 // API.mixin(require('./lib/api_ip'));
 // // JS SDK
